@@ -11,8 +11,11 @@ export class AppController {
 
   @MessagePattern('token_create')
   public async createToken(@Payload() data: string): Promise<ITokenResponse> {
-    const user = JSON.parse(data);
-    return this.appService.createToken(user.id);
+    const user: {
+      userId: number;
+      role: string;
+    } = JSON.parse(data);
+    return this.appService.createToken(user);
   }
 
   @MessagePattern('token_decode')
