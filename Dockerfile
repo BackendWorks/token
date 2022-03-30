@@ -4,6 +4,7 @@ RUN npm install -g npm@6.14.7
 RUN mkdir -p /var/www/token
 WORKDIR /var/www/token
 ADD . /var/www/token
+RUN npm install
 COPY wait-for-it.sh /usr/local/bin/wait-for-it
 RUN chmod +x /usr/local/bin/wait-for-it
 CMD npm start
